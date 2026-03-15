@@ -1,0 +1,315 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;600;700&family=Noto+Serif+SC:wght@400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+@layer base {
+  :root {
+    --background: 100 20% 98%;
+    --foreground: 120 15% 18%;
+    --card: 0 0% 100%;
+    --card-foreground: 120 15% 18%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 120 15% 18%;
+    --primary: 120 30% 42%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 120 25% 95%;
+    --secondary-foreground: 120 30% 35%;
+    --muted: 120 15% 95%;
+    --muted-foreground: 120 10% 45%;
+    --accent: 120 25% 95%;
+    --accent-foreground: 120 30% 35%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 120 20% 88%;
+    --input: 120 20% 88%;
+    --ring: 120 30% 42%;
+    --radius: 0.75rem;
+    
+    --eco-primary: #4d8b4d;
+    --eco-primary-light: #e8f5e9;
+    --eco-primary-dark: #2e5c2e;
+    --eco-text: #2c3e2c;
+    --eco-text-secondary: #5a6b5a;
+    --eco-text-muted: #8a9a8a;
+    --eco-border: #d4e4d4;
+    --eco-bg: #f8fbf8;
+    --eco-gold: #f4c430;
+    --eco-orange: #e8913a;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  html {
+    font-size: 16px;
+  }
+  body {
+    @apply bg-background text-foreground;
+    font-family: 'Noto Sans SC', 'PingFang SC', sans-serif;
+    font-size: 16px;
+    line-height: 1.6;
+  }
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Noto Serif SC', serif;
+  }
+}
+
+@layer utilities {
+  .eco-gradient {
+    background: linear-gradient(135deg, #e8f5e9 0%, #f8fbf8 100%);
+  }
+  .eco-card-shadow {
+    box-shadow: 0 4px 20px rgba(77, 139, 77, 0.08);
+  }
+  .eco-hover-shadow {
+    box-shadow: 0 8px 30px rgba(77, 139, 77, 0.15);
+  }
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+::-webkit-scrollbar-track {
+  background: #f1f8f1;
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb {
+  background: #a8d5a8;
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #7bc47b;
+}
+
+/* Animation classes */
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+@keyframes pulse-soft {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.7; }
+}
+@keyframes scorePop {
+  0% { transform: scale(1); opacity: 1; }
+  50% { transform: scale(1.5); opacity: 0.8; }
+  100% { transform: scale(1); opacity: 0; }
+}
+
+.animate-float {
+  animation: float 3s ease-in-out infinite;
+}
+.animate-fade-in-up {
+  animation: fadeInUp 0.4s ease-out forwards;
+}
+.animate-pulse-soft {
+  animation: pulse-soft 2s ease-in-out infinite;
+}
+.animate-score-pop {
+  animation: scorePop 1s ease-out forwards;
+}
+
+/* Card hover effects */
+.eco-card-shadow {
+  transition: box-shadow 0.3s ease, transform 0.3s ease;
+}
+
+.eco-card-shadow:hover {
+  box-shadow: 0 8px 30px rgba(77, 139, 77, 0.15);
+  transform: translateY(-2px);
+}
+
+/* Button press effect */
+button:active:not(:disabled) {
+  transform: scale(0.98);
+}
+
+/* Table styles */
+table th {
+  font-weight: 600;
+}
+
+table tbody tr {
+  transition: background-color 0.2s ease;
+}
+
+/* Input focus styles */
+input:focus, select:focus, textarea:focus {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(77, 139, 77, 0.15);
+}
+
+/* Star rating */
+.star-rating-enter {
+  animation: starPop 0.3s ease-out;
+}
+
+/* Artistic title */
+.artistic-title {
+  font-family: 'Noto Serif SC', serif;
+  background: linear-gradient(135deg, #2e5c2e 0%, #4d8b4d 50%, #6ab06a 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  text-shadow: 0 2px 10px rgba(77, 139, 77, 0.2);
+  letter-spacing: 0.05em;
+}
+
+/* Badge styles */
+.badge-excellent {
+  background: linear-gradient(135deg, #e8f5e9 0%, #c8e6c9 100%);
+  color: #2e7d32;
+}
+
+.badge-good {
+  background: linear-gradient(135deg, #fff8e1 0%, #ffecb3 100%);
+  color: #f57c00;
+}
+
+.badge-average {
+  background: linear-gradient(135deg, #ffebee 0%, #ffcdd2 100%);
+  color: #c62828;
+}
+
+/* Leaderboard podium */
+.podium-1 {
+  background: linear-gradient(135deg, #ffd700 0%, #ffed4a 100%);
+}
+
+.podium-2 {
+  background: linear-gradient(135deg, #c0c0c0 0%, #e0e0e0 100%);
+}
+
+.podium-3 {
+  background: linear-gradient(135deg, #cd7f32 0%, #daa520 100%);
+}
+
+/* Loading shimmer */
+@keyframes shimmer {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+.loading-shimmer {
+  background: linear-gradient(
+    90deg,
+    #f0f7f0 25%,
+    #e8f5e9 50%,
+    #f0f7f0 75%
+  );
+  background-size: 200% 100%;
+  animation: shimmer 1.5s infinite;
+}
+
+/* Print styles */
+@media print {
+  .no-print {
+    display: none !important;
+  }
+  
+  .print-only {
+    display: block !important;
+  }
+  
+  body {
+    background: white !important;
+  }
+  
+  .eco-card-shadow {
+    box-shadow: none !important;
+    border: 1px solid #ddd !important;
+  }
+}
+
+/* ==================== AdminPanel 样式 ==================== */
+
+/* 管理员面板卡片样式 */
+.admin-card {
+  @apply bg-white rounded-xl shadow-sm border border-gray-100 overflow-hidden;
+}
+
+/* 统计卡片 */
+.stat-card {
+  @apply bg-white rounded-lg p-4 shadow-sm;
+}
+
+/* 标签页样式 */
+.admin-tab {
+  @apply px-4 py-3 text-sm font-medium border-b-2 transition-colors;
+}
+.admin-tab-active {
+  @apply border-green-500 text-green-600;
+}
+.admin-tab-inactive {
+  @apply border-transparent text-gray-500 hover:text-gray-700;
+}
+
+/* 教师列表项 */
+.teacher-item {
+  @apply bg-gray-50 rounded-lg p-4 border border-gray-200;
+}
+
+/* 状态标签 */
+.status-badge {
+  @apply px-2 py-0.5 text-xs rounded-full;
+}
+.status-badge-pending {
+  @apply bg-yellow-100 text-yellow-700;
+}
+.status-badge-active {
+  @apply bg-green-100 text-green-700;
+}
+.status-badge-disabled {
+  @apply bg-gray-100 text-gray-700;
+}
+
+/* 审核按钮 */
+.btn-approve {
+  @apply px-4 py-2 bg-green-500 text-white rounded-lg hover:bg-green-600 transition-colors flex items-center gap-1;
+}
+.btn-reject {
+  @apply px-4 py-2 bg-red-500 text-white rounded-lg hover:bg-red-600 transition-colors flex items-center gap-1;
+}
+.btn-disable {
+  @apply px-4 py-2 bg-orange-500 text-white rounded-lg hover:bg-orange-600 transition-colors;
+}
+.btn-enable {
+  @apply px-4 py-2 bg-green-500 text-white rounded-lg hover:bg-green-600 transition-colors flex items-center gap-1;
+}
+
+/* 信息网格 */
+.info-grid {
+  @apply grid grid-cols-1 md:grid-cols-3 gap-2 text-sm;
+}
+.info-label {
+  @apply text-gray-500;
+}
+.info-value {
+  @apply text-gray-700;
+}
+
+/* 空状态 */
+.empty-state {
+  @apply text-center py-12 text-gray-500;
+}
